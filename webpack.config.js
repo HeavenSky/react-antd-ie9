@@ -9,13 +9,13 @@ const publicConfig = {
 	devtool: 'cheap-module-source-map',
 	module: {
 		rules: [{
-			test: /\.css$/,
+			test: /\.css$/i,
 			use: ExtractTextPlugin.extract({
 				fallback: 'style-loader',
 				use: ['css-loader', 'postcss-loader'],
 			}),
 		}, {
-			test: /\.less$/,
+			test: /\.less$/i,
 			use: ExtractTextPlugin.extract({
 				fallback: 'style-loader',
 				use: ['css-loader', 'postcss-loader', 'less-loader'],

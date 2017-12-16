@@ -13,7 +13,7 @@ commonConfig = {
 	},
 	module: {
 		rules: [{
-			test: /\.js$/,
+			test: /\.js$/i,
 			use: [{
 				loader: 'babel-loader',
 				options: {
@@ -22,7 +22,7 @@ commonConfig = {
 			}],
 			include: path.join(__dirname, 'src'),
 		}, {
-			test: /\.(bmp|gif|ico|jpg|png)$/,
+			test: /\.(bmp|gif|ico|jpg|png)$/i,
 			use: [{
 				loader: 'url-loader',
 				options: {
@@ -41,6 +41,10 @@ commonConfig = {
 			from: '*.dll.js',
 			to: 'static/js',
 		}]),
+		new webpack.ContextReplacementPlugin(
+			/moment[\/\\]locale$/i,
+			/^\.\/(zh-cn)$/i,
+		),
 		new webpack.HashedModuleIdsPlugin(),
 		new webpack.optimize.CommonsChunkPlugin({ name: 'runtime' }),
 		new webpack.DllReferencePlugin({

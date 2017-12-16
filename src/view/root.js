@@ -9,8 +9,8 @@ import Loading from 'components/Loading';
 import { newBundle } from 'utils/bundle';
 
 const createBundle = newBundle(Loading);
-export default props => <HashRouter {...props}>
-	<div>
+export default props => <HashRouter>
+	<div {...props}>
 		<Route component={Side} />
 		<br />
 		<Switch>

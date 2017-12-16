@@ -21,6 +21,9 @@ module.exports = {
 			'redux-undo',
 			"pubsub-js",
 			"signals",
+			"numeral",
+			"jquery",
+			"moment",
 		],
 	},
 	output: {
