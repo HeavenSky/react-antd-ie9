@@ -7,10 +7,15 @@ module.exports = {
 		extensions: ['.js', '.jsx'],
 	},
 	entry: {
+		shim: [
+			'console-polyfill',
+			'es5-shim',
+			'es5-shim/es5-sham',
+			'html5shiv',
+		],
 		vendor: [
 			'raf/polyfill',
-			'core-js/es6/map',
-			'core-js/es6/set',
+			'babel-polyfill',
 			'react',
 			'react-dom',
 			'react-router-dom',
@@ -19,11 +24,11 @@ module.exports = {
 			'redux-logger',
 			'redux-thunk',
 			'redux-undo',
-			"pubsub-js",
-			"signals",
-			"numeral",
-			"jquery",
-			"moment",
+			'pubsub-js',
+			'signals',
+			'numeral',
+			'jquery',
+			'moment',
 		],
 	},
 	output: {
@@ -40,6 +45,10 @@ module.exports = {
 		new webpack.DefinePlugin({
 			'process.env': { 'NODE_ENV': JSON.stringify('production') },
 		}),
+		new webpack.ContextReplacementPlugin(
+			/moment[\/\\]locale$/i,
+			/^\.\/(zh-cn)$/i,
+		),
 		new webpack.DllPlugin({
 			context: __dirname,
 			name: '[name]_[chunkhash:5]',

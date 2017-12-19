@@ -11,11 +11,12 @@
 		* 如果想要两个不关联的组件进行通信, 推荐两个插件, 都简单易用(支持 IE8+)
 			* [pubsub-js](https://www.npmjs.com/package/pubsub-js) 上面就有具体例子
 			* [signals](https://www.npmjs.com/package/signals) [例子](https://github.com/millermedeiros/js-signals/wiki/Examples) 据说 facebook 就是用的这个
-	* dependencies 查询和资料参考来源 [官网](https://www.npmjs.com)
+	* dependencies 查询和资料参考来源 [npmjs官网](https://www.npmjs.com)
 	* webpack 配置增加 less 支持
 	* webpack 配置增加 ant design 系列的支持
 		* 引入 [antd 3.x](http://ant.design) [antd-mobile](https://mobile.ant.design/)
 		* 引入 [babel-plugin-import](https://www.npmjs.com/package/babel-plugin-import), 并更改 `.babelrc`
+* antd 需要`match-media`, 在[npmjs官网](https://www.npmjs.com)找到的不支持`addListener`和`removeListener`, 索性还是直接从[阿里的库里](https://as.alipayobjects.com/g/component/??media-match/2.0.2/media.match.min.js)拿
 * package.json 里面更新 version 到对应小版本最新
 * webpack.common.config.js 中 output 关于使用 绝对路径 和 相对路径 的看法
 	* 如果当前就一个单页应用, 可以直接用相对路径配置, 那样生产模式编译后直接用浏览器打开 dist/index.html 也能看到效果
@@ -28,13 +29,12 @@
 刚开始学 webpack, 还有很多不懂, 欢迎指点秘籍, 或者纠错改进, 共同学习,共同进步
 
 ## 开发坏境启动
-1. `npm install`
-2. `npm run dll`
+1. `npm install` 若在前面运行过此命令, 可跳过
+2. `npm run dll` 若在前面运行过此命令, 可跳过
 3. `npm start`
 4. 浏览器打开[http://localhost:8888](http://localhost:8888)
 
 ## 生产坏境部署
 1. `npm install` 若在前面运行过此命令, 可跳过
-2. `npm run dll` 若在前面运行过此命令, 可跳过
-3. `npm run app`
-4. 拷贝dist文件夹内容至服务器即可
+2. `npm run app`
+3. 拷贝dist文件夹内容至服务器即可
