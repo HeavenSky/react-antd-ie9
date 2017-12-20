@@ -17,13 +17,14 @@ module.exports = {
 			'raf/polyfill',
 			'babel-polyfill',
 			'react',
-			'react-dom',
-			'react-router-dom',
 			'redux',
-			'react-redux',
-			'redux-logger',
-			'redux-thunk',
+			'react-dom',
 			'redux-undo',
+			'react-redux',
+			'redux-thunk',
+			'redux-logger',
+			'react-router-dom',
+			'react-title-component',
 			'pubsub-js',
 			'signals',
 			'numeral',
@@ -38,10 +39,7 @@ module.exports = {
 		// library 与 DllPlugin 中的 name 一致
 	},
 	plugins: [
-		new CleanWebpackPlugin([
-			'build',
-			'dist',
-		]),
+		new CleanWebpackPlugin(['build']),
 		new webpack.DefinePlugin({
 			'process.env': { 'NODE_ENV': JSON.stringify('production') },
 		}),

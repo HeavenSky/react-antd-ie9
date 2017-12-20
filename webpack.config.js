@@ -23,12 +23,7 @@ const publicConfig = {
 		}],
 	},
 	plugins: [
-		new CleanWebpackPlugin([
-			'dist/*.*',
-			'dist/css',
-			'dist/img',
-			'dist/js',
-		]),
+		new CleanWebpackPlugin(['dist']),
 		new UglifyJSPlugin({
 			compress: { warnings: false },
 			output: { comments: false },

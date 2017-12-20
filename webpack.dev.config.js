@@ -27,21 +27,16 @@ const devConfig = {
 		contentBase: path.join(__dirname, './dist'),
 		historyApiFallback: true,
 		inline: false, // ie11以下不支持会报错
-		open: true,
+		open: false,
 		publicPath: '/',
 		host: 'localhost',
 		port: 8888,
 		proxy: {
-			'/action': {
-				target: 'http://www.thebuddy.cn',
-				secure: false,
+			'/proxy': {
+				target: 'https://www.easy-mock.com',
+				secure: true,
 				changeOrigin: true,
-			},
-			'/askme': {
-				target: 'http://www.aaskme.cn',
-				secure: false,
-				changeOrigin: true,
-				pathRewrite: { '^/askme': '/consultant' },
+				pathRewrite: { '^/proxy': '/mock/123456789' },
 			},
 		},
 	},

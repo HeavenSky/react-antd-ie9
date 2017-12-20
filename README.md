@@ -16,7 +16,12 @@
 	* webpack 配置增加 ant design 系列的支持
 		* 引入 [antd 3.x](http://ant.design) [antd-mobile](https://mobile.ant.design/)
 		* 引入 [babel-plugin-import](https://www.npmjs.com/package/babel-plugin-import), 并更改 `.babelrc`
-* antd 需要`match-media`, 在[npmjs官网](https://www.npmjs.com)找到的不支持`addListener`和`removeListener`, 索性还是直接从[阿里的库里](https://as.alipayobjects.com/g/component/??media-match/2.0.2/media.match.min.js)拿
+* antd 需要`window.matchMedia`, 在[npmjs官网](https://www.npmjs.com)找到两个 ployfill 库(两者名字不一样!!!): `match-media` 和 `media-match`
+	* 两者均不能使用 `import matchMedia from '<package_name>';` 只能用 `import '<package_name>';`
+	* `match-media` 只是 `import 'match-media';` 并未兼容 `addListener` 和 `removeListener`, 需要再引入 `import 'match-media/matchMedia.addListener';`
+	* `media-match` 直接引入即可 `import 'media-match';`
+	* 也可以直接从[阿里的库里](https://as.alipayobjects.com/g/component/??media-match/2.0.2/media.match.min.js)拿
+的不支持`addListener`和`removeListener`, 索性还是直接从[阿里的库里](https://as.alipayobjects.com/g/component/??media-match/2.0.2/media.match.min.js)拿
 * package.json 里面更新 version 到对应小版本最新
 * webpack.common.config.js 中 output 关于使用 绝对路径 和 相对路径 的看法
 	* 如果当前就一个单页应用, 可以直接用相对路径配置, 那样生产模式编译后直接用浏览器打开 dist/index.html 也能看到效果

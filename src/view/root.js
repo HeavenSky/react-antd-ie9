@@ -1,19 +1,18 @@
 import React from 'react';
-import { HashRouter, Switch, Redirect, Route } from 'react-router-dom';
-import { Layout, Icon } from 'antd';
+import { HashRouter, Switch, Route } from 'react-router-dom';
+import { Layout } from 'antd';
+const { Header, Footer, Sider, Content } = Layout;
 
 import Home from 'bundle-loader?lazy&name=home!components/Home';
 import Test from 'bundle-loader?lazy&name=test!components/Test';
 
-import Menu from '../components/Menu';
-import Loading from '../components/Loading';
-import { SIDER_MENU } from '../constants/columns';
-import { newBundle } from 'utils/bundle';
+import Menu from 'components/Menu';
+import Loading from 'components/Loading';
+import { SIDER_MENU } from 'constants/columns';
+import { bundle } from 'utils/bundle';
 import './root.less';
 
-const { Header, Footer, Sider, Content } = Layout;
-const createBundle = newBundle(Loading);
-
+const createBundle = bundle(Loading);
 export default props => <HashRouter>
 	<Layout>
 		<Sider
@@ -29,13 +28,7 @@ export default props => <HashRouter>
 			/>
 		</Sider>
 		<Layout>
-			<Header className='header'>
-				<Menu
-					menus={SIDER_MENU}
-					theme='dark'
-					mode='horizontal'
-				/>
-			</Header>
+			<Header className='header' />
 			<Content>
 				<Switch>
 					<Route path='/home' component={createBundle(Home)} />
@@ -43,7 +36,7 @@ export default props => <HashRouter>
 					<Route component={createBundle(Test)} />
 				</Switch>
 			</Content>
-			<Footer>HeavenSky</Footer>
+			<Footer />
 		</Layout>
 	</Layout>
 </HashRouter>
