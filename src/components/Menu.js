@@ -4,7 +4,7 @@ import { Menu, Icon } from 'antd';
 
 const NewLink =
 	({ children, disabled, to, location: { pathname } }) =>
-		disabled || pathname === to ? <a>{children}</a> :
+		disabled || pathname === to ? <span>{children}</span> :
 			<Link to={to}>{children}</Link>;
 const RouterLink = withRouter(NewLink);
 const renderMenuItem =
