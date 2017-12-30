@@ -25,6 +25,7 @@ module.exports = {
 			'redux-logger',
 			'react-router-dom',
 			'react-title-component',
+			'js-cookie',
 			'pubsub-js',
 			'signals',
 			'numeral',
@@ -45,8 +46,9 @@ module.exports = {
 		}),
 		new webpack.ContextReplacementPlugin(
 			/moment[\/\\]locale$/i,
-			/^\.\/(zh-cn)$/i,
+			/^\.\/zh\-cn$/i,
 		),
+		// new webpack.IgnorePlugin(/^\.\/locale$/i, /moment$/i),
 		new webpack.DllPlugin({
 			context: __dirname,
 			name: '[name]_[chunkhash:5]',

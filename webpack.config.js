@@ -24,12 +24,12 @@ const publicConfig = {
 	},
 	plugins: [
 		new CleanWebpackPlugin(['dist']),
+		new webpack.DefinePlugin({
+			'process.env': { 'NODE_ENV': JSON.stringify('production') },
+		}),
 		new UglifyJSPlugin({
 			compress: { warnings: false },
 			output: { comments: false },
-		}),
-		new webpack.DefinePlugin({
-			'process.env': { 'NODE_ENV': JSON.stringify('production') },
 		}),
 		new ExtractTextPlugin({
 			filename: 'css/[name].[contenthash:5].css',

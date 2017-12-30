@@ -43,8 +43,9 @@ commonConfig = {
 		}]),
 		new webpack.ContextReplacementPlugin(
 			/moment[\/\\]locale$/i,
-			/^\.\/(zh-cn)$/i,
+			/^\.\/zh\-cn$/i,
 		),
+		// new webpack.IgnorePlugin(/^\.\/locale$/i, /moment$/i),
 		new webpack.HashedModuleIdsPlugin(),
 		new webpack.optimize.CommonsChunkPlugin({ name: 'runtime' }),
 		new webpack.DllReferencePlugin({
