@@ -20,11 +20,11 @@ export default props => <HashRouter>
 			<Header className='header' />
 			<Content>
 				<Switch>
-					<Redirect from='/hello' to="/test" />
+					<Redirect from='/hello' to='/test' />
 					<Route path='/home' component={Home} />
 					<Route path='/test' component={Test} />
 					<Route path='/404' component={NoAu} />
-					<Route render={() => <Redirect to="/404" />} />
+					<Redirect to='/404' />
 				</Switch>
 			</Content>
 			<Footer />

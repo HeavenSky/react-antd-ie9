@@ -45,8 +45,8 @@ module.exports = {
 			'process.env': { 'NODE_ENV': JSON.stringify('production') },
 		}),
 		new webpack.ContextReplacementPlugin(
-			/moment[\/\\]locale$/i,
-			/^\.\/zh\-cn$/i,
+			/moment[\\/]locale$/i,
+			/^\.\/zh-cn$/i,
 		),
 		// new webpack.IgnorePlugin(/^\.\/locale$/i, /moment$/i),
 		new webpack.DllPlugin({

@@ -29,7 +29,7 @@ const devConfig = {
 		inline: false, // ie11以下不支持会报错
 		open: false,
 		publicPath: '/',
-		host: 'localhost',
+		host: '0.0.0.0',
 		port: 8888,
 		proxy: {
 			'/proxy': {

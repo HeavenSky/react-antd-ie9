@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-commonConfig = {
+const commonConfig = {
 	entry: {},
 	output: {
 		path: path.join(__dirname, './dist'),
@@ -13,7 +13,7 @@ commonConfig = {
 	},
 	module: {
 		rules: [{
-			test: /\.js$/i,
+			test: /\.jsx?$/i,
 			use: [{
 				loader: 'babel-loader',
 				options: {
@@ -21,6 +21,7 @@ commonConfig = {
 				},
 			}],
 			include: path.join(__dirname, 'src'),
+			exclude: path.join(__dirname, 'src/static')
 		}, {
 			test: /\.(bmp|gif|ico|jpg|png)$/i,
 			use: [{
@@ -42,8 +43,8 @@ commonConfig = {
 			to: 'static/js',
 		}]),
 		new webpack.ContextReplacementPlugin(
-			/moment[\/\\]locale$/i,
-			/^\.\/zh\-cn$/i,
+			/moment[\\/]locale$/i,
+			/^\.\/zh-cn$/i,
 		),
 		// new webpack.IgnorePlugin(/^\.\/locale$/i, /moment$/i),
 		new webpack.HashedModuleIdsPlugin(),
