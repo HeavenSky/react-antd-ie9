@@ -5,7 +5,6 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 module.exports = {
 	resolve: {
 		extensions: [".js", ".jsx", ".json"],
-		modules: [path.join(__dirname, "node_modules")],
 	},
 	entry: {
 		shim: [
