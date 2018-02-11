@@ -3,37 +3,34 @@ var webpack = require("webpack");
 
 module.exports = {
 	resolve: {
-		extensions: [".js", ".jsx"],
+		extensions: [".js", ".jsx", ".json"],
+		modules: [path.join(__dirname, "node_modules")],
 	},
 	entry: {
 		shim: [
 			"console-polyfill",
-			"es5-shim",
-			"es5-shim/es5-sham",
-			"html5shiv",
 			"babel-polyfill",
 			"raf/polyfill",
 			"media-match",
 		],
 		public: [
-			"when",
 			"jquery",
 			"moment",
 			"numeral",
 			"signals",
 			"js-cookie",
 			"pubsub-js",
+			"nprogress",
 			"moment/locale/zh-cn",
-			"jquery-ui-dist/jquery-ui",
+			"jquery-ui-dist/jquery-ui.min",
 		],
 		vendor: [
 			"react",
-			"redux",
 			"react-dom",
+			"redux",
 			"redux-undo",
 			"react-redux",
 			"react-router-dom",
-			"react-title-component",
 		],
 	},
 	output: {

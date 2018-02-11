@@ -38,15 +38,21 @@ const devConfig = {
 		historyApiFallback: true,
 		inline: false, // ie11以下不支持inline
 		open: false,
+		hot: true,
 		publicPath: "/",
 		host: "0.0.0.0",
 		port: 8888,
 		proxy: {
-			"/mockjs": {
-				target: "https://www.easy-mock.com",
+			"/proxy/abc": {
+				target: "http://abc.com",
+				secure: false,
+				changeOrigin: true,
+			},
+			"/proxy/xyz": {
+				target: "https://xyz.com",
 				secure: true,
 				changeOrigin: true,
-				pathRewrite: { "^/mockjs": "/mock/5a355bde12b3e26d1c754337" },
+				pathRewrite: { "^/proxy/xyz": "/abc" },
 			},
 		},
 	},

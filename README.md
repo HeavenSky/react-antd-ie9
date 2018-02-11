@@ -1,4 +1,4 @@
-# react-ant
+# react-antd-ie9
 这是一个以最新版 React, React Router DOM, Ant Design 等现代流行框架写的兼容 IE9 的 demo 例子.
 
 ## 技术参考 和 代码介绍
@@ -70,7 +70,6 @@
 * 引入样式文件
 ### 兼容 MAC shell 的 `sed` 命令
 ```shell
-# 拷贝至bash直接回车即可 当前目录是node_modules所在目录
 if [ `uname` = 'Darwin' ];
 then
 	alias sed='sed -i '\'\'

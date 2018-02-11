@@ -1,0 +1,49 @@
+@header: #7dbcea;
+.logo {
+	height: 32px;
+	background-color: @header;
+	margin: 16px;
+}
+.sider {
+	height: 100vh;
+	float: left;
+}
+.header {
+	background-color: @header;
+	padding: 9px 20px;
+}
+.it-margin {
+	margin: 10px 0;
+}
+.ot-padding {
+	padding: 10px 20px;
+}
+.strike {
+	color: #ddd;
+	text-decoration: line-through;
+}
+button[disabled] {
+	background-color: #eee;
+	color: #aaa;
+}
+::-webkit-scrollbar {
+	width: 5px;
+	height: 5px;
+}
+::-webkit-scrollbar-thumb {
+	border-radius: 5px;
+	outline-offset: -1px;
+	background-color: rgba(0, 0, 0, 0.3);
+	&:hover {
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+}
+::-webkit-scrollbar-track {
+	background-color: rgba(0, 0, 0, 0.1);
+	&:hover {
+		background-color: rgba(0, 0, 0, 0.2);
+	}
+}
+::-webkit-scrollbar-track-piece {
+	background-color: transparent;
+}

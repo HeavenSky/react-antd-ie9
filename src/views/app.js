@@ -2,19 +2,23 @@ import React, { Component } from "react";
 import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
 import { Layout, Alert } from "antd";
 
-import Todo from "./_todo";
-import Count from "./_count";
-import Async from "./_async";
 import { SIDER_MENU } from "../constants/columns";
 import Menu from "../components/Menu";
-import "./root.less";
+import Http from "../components/Http";
+import Push from "../components/Push";
+import "./app.less";
 
 const { Header, Footer, Sider, Content } = Layout;
 const Home = props => "主页";
 const Test = props => "测试";
 
 class NoAu extends Component {
-	state = { arr: [1, 2, 3, 4, 5, 6, 7, 8] };
+	state = {
+		arr: [1, 2, 3, 4, 5, 6, 7, 8],
+		url: null,
+		file: null,
+	};
+	change = key => val => this.setState({ [key]: val });
 	componentDidMount() {
 		const wrap = $(".sort-test");
 		wrap.sortable({
@@ -31,8 +35,8 @@ class NoAu extends Component {
 		}).disableSelection();
 	};
 	render() {
-		const { arr } = this.state;
-		return <div>
+		const { arr, url, file } = this.state;
+		return <div className="ot-padding">
 			<div className="sort-test">
 				<div key="other" className="it-margin">
 					<Alert message="法海不懂爱,页面出不来..." />
@@ -43,11 +47,13 @@ class NoAu extends Component {
 					</div>
 				)}
 			</div>
+			<Http value={url} onChange={this.change("url")} />
+			<Push value={file} onChange={this.change("file")} />
 		</div>;
 	};
 };
 
-const RootComponent = props => <HashRouter>
+const App = props => <HashRouter>
 	<Layout>
 		<Sider className="sider" breakpoint="lg" collapsedWidth="80" >
 			<div className="logo" />
@@ -61,11 +67,11 @@ const RootComponent = props => <HashRouter>
 					<Route path="/home" component={Home} />
 					<Route path="/test" component={Test} />
 					<Route path="/404" component={NoAu} />
-					<Redirect to="/404" />
 				</Switch>
 			</Content>
 			<Footer />
 		</Layout>
 	</Layout>
 </HashRouter>;
-export default RootComponent;
+
+export default App;
