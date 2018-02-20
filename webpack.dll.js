@@ -1,8 +1,9 @@
-var path = require("path");
-var webpack = require("webpack");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const path = require("path");
+const webpack = require("webpack");
+const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 
-module.exports = {
+const isProd = process.env.NODE_ENV === "production";
+const dllConfig = {
 	resolve: {
 		extensions: [".js", ".jsx", ".json"],
 	},
@@ -14,17 +15,16 @@ module.exports = {
 			"media-match",
 		],
 		public: [
-			"jquery",
+			"axios",
 			"moment",
 			"numeral",
 			"signals",
 			"js-cookie",
 			"pubsub-js",
-			"nprogress",
 			"moment/locale/zh-cn",
-			"jquery-ui-dist/jquery-ui.min",
 		],
 		vendor: [
+			"nprogress",
 			"react",
 			"react-dom",
 			"redux",
@@ -41,15 +41,17 @@ module.exports = {
 	},
 	plugins: [
 		new webpack.DefinePlugin({
-			"process.env": { "NODE_ENV": JSON.stringify("production") },
+			"process.env": {
+				"NODE_ENV": JSON.stringify(
+					isProd ? "production" : "development"
+				),
+			},
 		}),
-		new CleanWebpackPlugin(["build"]),
 		/*new webpack.ContextReplacementPlugin(
 			/moment[\\/]locale$/i,
 			/^\.\/zh-cn$/i,
 		),*/
 		new webpack.IgnorePlugin(/^\.\/locale$/i, /moment$/i),
-		new webpack.optimize.UglifyJsPlugin(),
 		new webpack.DllPlugin({
 			context: __dirname,
 			name: "[name]_[chunkhash:5]",
@@ -57,3 +59,8 @@ module.exports = {
 		}),
 	],
 };
+if (isProd) {
+	dllConfig.plugins.push(new UglifyJSPlugin());
+}
+
+module.exports = dllConfig;

@@ -55,7 +55,7 @@ class NoAu extends Component {
 
 const App = props => <HashRouter>
 	<Layout>
-		<Sider className="sider" breakpoint="lg" collapsedWidth="80" >
+		<Sider className="sider" breakpoint="md" collapsedWidth="80">
 			<div className="logo" />
 			<Menu theme="dark" mode="inline" menus={SIDER_MENU} />
 		</Sider>
