@@ -1,39 +1,58 @@
+export const SIDER_URLS = {
+	"/home": { label: "首页", icon: "home" },
+	"/home/buttons": { label: "按钮", icon: "mobile" },
+	"/home/buttons/spins": { label: "加载中", icon: "pause", type: "link" },
+	"/home/buttons/modals": { label: "对话框", icon: "question", type: "link" },
+	"/home/icons": { label: "图标", icon: "scan", type: "link" },
+	"/hello": { label: "你好", icon: "smile", type: "link" },
+	"/test": { label: "测试", icon: "notification" },
+	"/test/cloud": { label: "按钮", icon: "cloud" },
+	"/test/cloud/spins": { label: "加载中", icon: "folder", type: "link" },
+	"/test/cloud/modals": { label: "对话框", icon: "meh", type: "link" },
+	"/test/icons": { label: "图标", icon: "lock" },
+	"/test/icons/spins": { label: "加载中", icon: "desktop", type: "link" },
+	"/test/icons/modals": { label: "对话框", icon: "download", type: "link" },
+	"/appstore": { label: "应用商店", icon: "appstore", type: "link", disabled: true },
+	"/laptop": { label: "平板电脑", icon: "laptop", type: "link" },
+	"/inbox": { label: "收件箱", icon: "inbox", type: "link" },
+	"/user": { label: "用户", icon: "user", type: "link" },
+};
 export const SIDER_MENU = [
 	{
-		key: "/home", label: "首页", icon: "home",
-		sub: [
+		key: "/home", type: "sub",
+		children: [
 			{
-				key: "/home/buttons", label: "按钮", icon: "mobile",
-				sub: [
-					{ key: "/home/buttons/spins", label: "加载中", icon: "pause" },
-					{ key: "/home/buttons/modals", label: "对话框", icon: "question" },
+				key: "/home/buttons", type: "sub",
+				children: [
+					{ key: "/home/buttons/spins" },
+					{ key: "/home/buttons/modals" },
 				],
 			},
-			{ key: "/home/icons", label: "图标", icon: "scan" },
+			{ key: "/home/icons" },
 		],
 	},
-	{ key: "/hello", label: "你好", icon: "smile" },
+	{ key: "/hello" },
 	{
-		key: "/test", label: "测试", icon: "notification",
-		sub: [
+		key: "/test", type: "sub",
+		children: [
 			{
-				key: "/test/cloud", label: "按钮", icon: "cloud",
-				group: [
-					{ key: "/test/cloud/spins", label: "加载中", icon: "folder" },
-					{ key: "/test/cloud/modals", label: "对话框", icon: "meh" },
+				key: "/test/cloud", type: "group",
+				children: [
+					{ key: "/test/cloud/spins" },
+					{ key: "/test/cloud/modals" },
 				],
 			},
 			{
-				key: "/test/icons", label: "图标", icon: "lock",
-				group: [
-					{ key: "/test/icons/spins", label: "加载中", icon: "desktop" },
-					{ key: "/test/icons/modals", label: "对话框", icon: "download" },
+				key: "/test/icons", type: "group",
+				children: [
+					{ key: "/test/icons/spins" },
+					{ key: "/test/icons/modals" },
 				],
 			},
 		],
 	},
-	{ key: "/appstore", label: "应用商店", icon: "appstore", disabled: true },
-	{ key: "/laptop", label: "平板电脑", icon: "laptop" },
-	{ key: "/inbox", label: "收件箱", icon: "inbox" },
-	{ key: "/user", label: "用户", icon: "user" },
+	{ key: "/appstore" },
+	{ key: "/laptop" },
+	{ key: "/inbox" },
+	{ key: "/user" },
 ];

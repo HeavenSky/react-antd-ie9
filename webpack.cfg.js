@@ -39,7 +39,9 @@ const publicConfig = {
 		new webpack.optimize.ModuleConcatenationPlugin(),
 		new webpack.optimize.OccurrenceOrderPlugin(),
 		new webpack.HashedModuleIdsPlugin(),
-		new UglifyJSPlugin(),
+		new UglifyJSPlugin({
+			sourceMap: false,
+		}),
 		new ExtractTextPlugin({
 			filename: "css/[name].[contenthash:5].css",
 			allChunks: true,

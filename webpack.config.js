@@ -1,11 +1,13 @@
 const path = require("path");
+const dir = path.join.bind(path, __dirname);
+const isProd = process.env.NODE_ENV === "production";
+
 const webpack = require("webpack");
 const merge = require("webpack-merge");
 const HappyPack = require("happypack");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-const isProd = process.env.NODE_ENV === "production";
 const currentConfig = require(isProd ? "./webpack.cfg" : "./webpack.cfg.dev");
 const commonConfig = {
 	entry: {
@@ -16,11 +18,11 @@ const commonConfig = {
 			"media-match", // 支持 antd 所必须
 		],
 		public: [
-			path.join(__dirname, "src/utils/public.js"),
+			dir("src/utils/public.js"),
 		],
 	},
 	output: {
-		path: path.join(__dirname, "dist"),
+		path: dir("dist"),
 		filename: "js/[name].[chunkhash:5].js",
 		// 用import()按需加载 https://doc.webpack-china.org/api/module-methods/#import-
 		chunkFilename: "js/[name].[chunkhash:5].js",
@@ -31,8 +33,8 @@ const commonConfig = {
 			{
 				test: /\.jsx?$/i,
 				use: "happypack/loader?cacheDirectory=true&id=jsx",
-				include: path.join(__dirname, "src"),
-				exclude: path.join(__dirname, "src/static"),
+				include: dir("src"),
+				exclude: dir("src/static"),
 			},
 			{
 				test: /\.(jpe?g|png|gif|bmp|ico)(\?.*)?$/i,
@@ -73,16 +75,6 @@ const commonConfig = {
 				to: "static",
 			},
 			{
-				context: "node_modules/jquery/dist",
-				from: "jquery.min.js",
-				to: "static/js",
-			},
-			{
-				context: "node_modules/jquery-ui-dist",
-				from: "jquery-ui.min.js",
-				to: "static/js",
-			},
-			{
 				context: "build",
 				from: "*.dll.js",
 				to: "static/js",
@@ -112,17 +104,17 @@ const commonConfig = {
 	],
 	resolve: {
 		alias: {
-			/*api: path.join(__dirname, "src/api"),
-			components: path.join(__dirname, "src/components"),
-			containers: path.join(__dirname, "src/containers"),
-			constants: path.join(__dirname, "src/constants"),
-			reducers: path.join(__dirname, "src/reducers"),
-			actions: path.join(__dirname, "src/actions"),
-			routes: path.join(__dirname, "src/routes"),
-			styles: path.join(__dirname, "src/styles"),
-			views: path.join(__dirname, "src/views"),
-			utils: path.join(__dirname, "src/utils"),
-			"@": path.join(__dirname, "src"),*/
+			/*api: dir("src/api"),
+			components: dir("src/components"),
+			containers: dir("src/containers"),
+			constants: dir("src/constants"),
+			reducers: dir("src/reducers"),
+			actions: dir("src/actions"),
+			routes: dir("src/routes"),
+			styles: dir("src/styles"),
+			views: dir("src/views"),
+			utils: dir("src/utils"),
+			"@": dir("src"),*/
 		},
 		extensions: [".js", ".jsx", ".json"],
 	},
@@ -133,12 +125,12 @@ const commonConfig = {
 const addPagePlugin = name => {
 	const app = name ? name + "/index" : "index";
 	commonConfig.entry[app] = [
-		path.join(__dirname, "src/views/" + app + ".js"),
+		dir("src/views/" + app + ".js"),
 	];
 	commonConfig.plugins.push(
 		new HtmlWebpackPlugin({
 			filename: app + ".html",
-			template: path.join(__dirname, "src/index.html"),
+			template: dir("src/index.html"),
 			title: app + " Home Page",
 			chunks: ["runtime", "shim", "public", app],
 			chunksSortMode: "manual",

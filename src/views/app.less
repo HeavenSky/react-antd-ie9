@@ -1,4 +1,35 @@
 @header: #7dbcea;
+.ant-menu-horizontal {
+	.ant-menu-submenu-title:after {
+		content: "\E60B";
+		font-family: "anticon";
+		margin-left: 10px;
+	}
+	.ant-menu-submenu-open .ant-menu-submenu-title:after {
+		content: "\E60A";
+	}
+}
+.ant-table table {
+	border-collapse: collapse;
+	th, td {
+		text-align: center;
+		line-height: 30px;
+		max-width: 130px;
+		min-width: 130px;
+		padding: 8px;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		.anticon {
+			font-size: 22px;
+			margin-left: 6px;
+			vertical-align: middle;
+		}
+	}
+	th {
+		font-weight: bold;
+	}
+}
 .logo {
 	height: 32px;
 	background-color: @header;
@@ -25,25 +56,4 @@
 button[disabled] {
 	background-color: #eee;
 	color: #aaa;
-}
-::-webkit-scrollbar {
-	width: 5px;
-	height: 5px;
-}
-::-webkit-scrollbar-thumb {
-	border-radius: 5px;
-	outline-offset: -1px;
-	background-color: rgba(0, 0, 0, 0.3);
-	&:hover {
-		background-color: rgba(0, 0, 0, 0.5);
-	}
-}
-::-webkit-scrollbar-track {
-	background-color: rgba(0, 0, 0, 0.1);
-	&:hover {
-		background-color: rgba(0, 0, 0, 0.2);
-	}
-}
-::-webkit-scrollbar-track-piece {
-	background-color: transparent;
 }
