@@ -3,7 +3,7 @@ import { Router } from "react-router-dom";
 import { Layout } from "antd";
 
 import { SIDER_URLS, SIDER_MENU } from "../constants/columns";
-import { RouteMenu, LinkItem } from "../components/Menu";
+import { RouteMenu } from "../components/Menu";
 import { RouteList } from "../components/Route";
 import history from "../utils/history";
 import routes from "./routes";
@@ -30,7 +30,6 @@ const App = props =>
 				<Header className="header" />
 				<Content>
 					<RouteList routes={routes} />
-					<LinkItem link={{ icon: "user", title: "出租车" }} />
 				</Content>
 				<Footer />
 			</Layout>
